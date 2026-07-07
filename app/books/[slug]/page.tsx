@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { BookCover } from "@/components/books/book-cover";
-import { Container } from "@/components/layout/container";
-import { Section } from "@/components/layout/section";
-import { Button } from "@/components/ui/button";
+import { AuthorSection } from "@/components/books/author-section";
+import { BookBreadcrumbs } from "@/components/books/book-breadcrumbs";
+import { BookHero } from "@/components/books/book-hero";
+import { BookLearnings } from "@/components/books/book-learnings";
+import { BookMetadataStrip } from "@/components/books/book-metadata-strip";
+import { BookPreview } from "@/components/books/book-preview";
+import { BookStructure } from "@/components/books/book-structure";
+import { FinalBookCTA } from "@/components/books/final-book-cta";
+import { ReaderProfile } from "@/components/books/reader-profile";
+import { ReadingPath } from "@/components/books/reading-path";
+import { RelatedBooks } from "@/components/books/related-books";
+import { SeriesNavigation } from "@/components/books/series-navigation";
 import { books, getBookBySlug } from "@/data/books";
 
 type BookPageProps = {
@@ -28,8 +36,12 @@ export async function generateMetadata({
     };
   }
 
+  const title = book.seriesNumber
+    ? `${book.title} Book ${book.seriesNumber} | Trading Book by Maor Saadia | MaorTrades`
+    : `${book.title} | Trading Book by Maor Saadia | MaorTrades`;
+
   return {
-    title: `${book.title} | MaorTrades`,
+    title,
     description: book.shortDescription,
   };
 }
@@ -43,51 +55,19 @@ export default async function BookPage({ params }: BookPageProps) {
   }
 
   return (
-    <Section>
-      <Container>
-        <div className="grid gap-10 border-y border-border py-12 md:grid-cols-[minmax(13rem,20rem)_1fr] md:py-16 lg:gap-14">
-          <BookCover
-            book={book}
-            priority
-            className="mx-auto w-full max-w-xs self-start md:max-w-none"
-            imageClassName="max-h-[34rem]"
-          />
-
-          <article className="max-w-3xl">
-            <p className="label text-gold">
-              {book.series
-                ? `${book.series} · Book ${book.seriesNumber}`
-                : book.categories[0]}
-            </p>
-            <h1 className="heading-lg mt-4 text-navy">{book.title}</h1>
-            {book.subtitle ? (
-              <p className="body-lg mt-4 text-muted-foreground">{book.subtitle}</p>
-            ) : null}
-            <p className="body-lg mt-7 text-muted-foreground">
-              {book.shortDescription}
-            </p>
-
-            <dl className="mt-8 grid gap-4 border-y border-border py-6 sm:grid-cols-2">
-              <div>
-                <dt className="label text-muted-foreground">Level</dt>
-                <dd className="body-sm mt-1 text-navy">{book.level}</dd>
-              </div>
-              <div>
-                <dt className="label text-muted-foreground">Format</dt>
-                <dd className="body-sm mt-1 text-navy">
-                  {book.formats.map((format) => format.toUpperCase()).join(" + ")}
-                </dd>
-              </div>
-            </dl>
-
-            <div className="mt-8">
-              <Button href="/books" variant="outline">
-                Back to All Books
-              </Button>
-            </div>
-          </article>
-        </div>
-      </Container>
-    </Section>
+    <>
+      <BookBreadcrumbs book={book} />
+      <BookHero book={book} />
+      <BookMetadataStrip book={book} />
+      <BookLearnings book={book} />
+      <BookStructure book={book} />
+      <ReaderProfile book={book} />
+      <BookPreview book={book} />
+      <ReadingPath book={book} />
+      <SeriesNavigation book={book} />
+      <AuthorSection />
+      <RelatedBooks book={book} />
+      <FinalBookCTA book={book} />
+    </>
   );
 }

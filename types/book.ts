@@ -1,4 +1,11 @@
-export type BookLevel = "beginner" | "intermediate" | "advanced" | "professional";
+export type BookLevel =
+  | "Beginner"
+  | "Beginner to Intermediate"
+  | "Beginner to Advanced"
+  | "Intermediate to Advanced"
+  | "Advanced"
+  | "All Levels"
+  | "Complete Learning Path";
 
 export type BookFormat = "pdf" | "ebook" | "print";
 
@@ -25,6 +32,8 @@ export type Book = {
   shortDescription: string;
   fullDescription?: string;
   coverImage?: string;
+  coverImageWidth?: number;
+  coverImageHeight?: number;
   price?: number;
   originalPrice?: number;
   currency?: "USD" | "EUR" | "ILS";

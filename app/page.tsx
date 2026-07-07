@@ -1,65 +1,66 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { Container } from "@/components/layout/container";
+import { Section } from "@/components/layout/section";
+import { SectionHeader } from "@/components/sections/section-header";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <>
+      <Section className="border-b border-border">
+        <Container className="grid min-h-[calc(100svh-5rem)] items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.08fr_0.92fr] lg:py-28">
+          <div className="max-w-3xl">
+            <Eyebrow>MAORTRADES &middot; BOOKS &amp; TRADING EDUCATION</Eyebrow>
+            <h1 className="display-xl mt-5 max-w-4xl text-navy">
+              MASTER THE LANGUAGE OF PRICE.
+            </h1>
+            <p className="body-lg mt-7 max-w-2xl text-muted-foreground">
+              Books and frameworks for traders serious about structure,
+              execution, risk, and professional discipline.
+            </p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <Button href="/books">Explore the Library</Button>
+              <Button href="/start-here" variant="outline">
+                Start Here
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-md lg:mr-0">
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-10 top-8 h-72 border border-gold/35 bg-surface shadow-refined"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            <div
+              aria-hidden="true"
+              className="relative ml-auto flex min-h-[27rem] w-full flex-col justify-between border border-navy/20 bg-navy p-8 text-ivory shadow-editorial"
+            >
+              <div>
+                <div className="h-px w-20 bg-gold" />
+                <p className="label mt-6 text-ivory/75">Institutional Operator</p>
+              </div>
+              <div>
+                <p className="display-lg text-ivory">PRICE</p>
+                <p className="display-lg text-ivory">STRUCTURE</p>
+                <p className="body-sm mt-6 max-w-48 text-ivory/70">
+                  Editorial preview for the MaorTrades publishing system.
+                </p>
+              </div>
+              <p className="label text-gold">MAOR SAADIA</p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section surface="muted">
+        <Container>
+          <SectionHeader
+            eyebrow="Foundation Preview"
+            title="A publishing platform for disciplined market operators."
+            description="This first phase establishes the layout, route structure, tokens, typography, and reusable components that later books, collections, guides, and resources can build upon."
+          />
+        </Container>
+      </Section>
+    </>
   );
 }

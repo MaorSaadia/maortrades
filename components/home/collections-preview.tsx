@@ -3,9 +3,21 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/sections/section-header";
 import { Button } from "@/components/ui/button";
-import { collections } from "@/data/collections";
+import { getCollectionBySlug } from "@/data/collections";
+
+const previewSlugs = [
+  "trading-foundations",
+  "smart-money-and-ict",
+  "complete-maortrades-library",
+];
 
 export function CollectionsPreview() {
+  const previewCollections = previewSlugs
+    .map((slug) => getCollectionBySlug(slug))
+    .filter((collection): collection is NonNullable<typeof collection> =>
+      Boolean(collection),
+    );
+
   return (
     <Section surface="muted">
       <Container>
@@ -21,7 +33,7 @@ export function CollectionsPreview() {
         </div>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {collections.slice(0, 3).map((collection, index) => (
+          {previewCollections.map((collection, index) => (
             <article
               key={collection.id}
               className="group flex min-h-80 flex-col justify-between border border-border bg-background p-6 transition-colors hover:border-gold"
@@ -42,10 +54,10 @@ export function CollectionsPreview() {
               </div>
               <div className="mt-10">
                 <p className="body-sm text-muted-foreground">
-                  {collection.description}
+                  {collection.shortDescription}
                 </p>
                 <Link
-                  href="/collections"
+                  href={`/collections/${collection.slug}`}
                   className="label mt-6 inline-flex text-navy transition-colors group-hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
                 >
                   Explore Collection

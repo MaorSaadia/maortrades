@@ -52,12 +52,12 @@ export function ReadingPath({ book }: ReadingPathProps) {
             {hasDisciplineTrack || hasCompleteTrack ? (
               <div className="mt-5 border-l border-gold bg-background p-5">
                 <p className="label text-gold">
-                  {hasCompleteTrack ? "Complete Learning Path" : "Specialized Track"}
+                  {hasCompleteTrack ? "Complete Learning Path" : "Discipline & Performance"}
                 </p>
                 <p className="body-sm mt-2 text-muted-foreground">
                   {hasCompleteTrack
                     ? "This book spans multiple stages of the MaorTrades library."
-                    : "This book supports the professional discipline and performance layer of the library."}
+                    : "This book supports the discipline and performance layer of the library."}
                 </p>
               </div>
             ) : null}

@@ -20,8 +20,8 @@ export function FinalBookCTA({ book }: FinalBookCTAProps) {
               <p className="body-lg mt-3 text-ivory/74">{book.subtitle}</p>
             ) : null}
             <p className="body mt-5 text-ivory/68">
-              Digital PDF edition direct purchasing will be available through
-              MaorTrades.
+              Direct PDF purchasing will be available when the MaorTrades store
+              launches.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
@@ -29,7 +29,7 @@ export function FinalBookCTA({ book }: FinalBookCTAProps) {
               role="status"
               className="label flex min-h-12 items-center justify-center border border-gold bg-gold px-5 text-center text-navy"
             >
-              Direct Purchase Coming Soon
+              PDF Edition Not Yet Available
             </div>
             <Button href="/books" variant="outline" className="border-ivory/30 text-ivory hover:bg-ivory hover:text-navy">
               Back to All Books

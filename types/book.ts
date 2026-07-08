@@ -19,6 +19,8 @@ export type ReadingPathStage =
   | "Professional Discipline"
   | "Complete Learning Path";
 
+export type BookStructureType = "verified-parts" | "editorial-topics";
+
 export type BookReview = {
   id: string;
   reviewerName: string;
@@ -53,9 +55,17 @@ export type BookPurchase = {
 
 export type BookPreview = {
   label?: string;
+  description?: string;
+  statusLabel?: string;
+  statusText?: string;
   samplePdf?: string;
   previewImages?: string[];
   sampleChapterLabel?: string;
+};
+
+export type BookSeoMetadata = {
+  title: string;
+  description: string;
 };
 
 export type Book = {
@@ -80,11 +90,14 @@ export type Book = {
   formats: BookFormat[];
   learnings?: string[];
   idealFor?: string[];
+  keyTopics?: string[];
+  structureType?: BookStructureType;
   bookStructure?: BookSection[];
   relatedBookSlugs?: string[];
   readingPathStages?: ReadingPathStage[];
   purchase?: BookPurchase;
   preview?: BookPreview;
+  seo: BookSeoMetadata;
   tableOfContents?: TableOfContentsItem[];
   reviews?: BookReview[];
   author: string;

@@ -31,20 +31,23 @@ export function BookHero({ book }: BookHeroProps) {
 
           <div className="grid gap-8 xl:grid-cols-[1fr_20rem]">
             <article>
-              <Eyebrow>
-                MAORTRADES &middot; {category}
-              </Eyebrow>
-              {book.series ? (
-                <p className="label mt-5 text-muted-foreground">
-                  {book.series} {book.seriesNumber ? `· Book ${book.seriesNumber}` : ""}
+              <Eyebrow>MAORTRADES &middot; {category}</Eyebrow>
+              {book.badge ? (
+                <p className="label mt-4 inline-flex border border-gold/35 px-3 py-1 text-gold">
+                  {book.badge}
                 </p>
               ) : null}
-              <h1 className="display-lg mt-4 text-navy">{book.title}</h1>
+              {book.series ? (
+                <p className="label mt-5 text-muted-foreground">
+                  {book.series} {book.seriesNumber ? `- Book ${book.seriesNumber}` : ""}
+                </p>
+              ) : null}
+              <h1 className="display-lg mt-4 break-words text-navy">{book.title}</h1>
               {book.subtitle ? (
                 <p className="heading-sm mt-5 text-foreground">{book.subtitle}</p>
               ) : null}
               <p className="body-lg mt-7 max-w-3xl text-muted-foreground">
-                {book.shortDescription}
+                {book.fullDescription ?? book.shortDescription}
               </p>
 
               <dl className="mt-8 grid gap-5 border-y border-border py-6 sm:grid-cols-3">

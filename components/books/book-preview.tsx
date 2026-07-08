@@ -16,19 +16,17 @@ export function BookPreview({ book }: BookPreviewProps) {
             <Eyebrow>Book Preview</Eyebrow>
             <h2 className="heading-lg mt-4 text-navy">LOOK INSIDE THE BOOK</h2>
             <p className="body-lg mt-5 text-muted-foreground">
-              {book.preview?.label
-                ? `${book.preview.label} architecture is prepared for future sample material.`
-                : "Preview architecture is prepared for future sample material."}
+              {book.preview?.description ??
+                "A selected book preview will be available before direct sales launch."}
             </p>
           </div>
           <div className="border border-border bg-surface p-6 shadow-refined">
-            <p className="label text-gold">Preview Coming Soon</p>
-            <p className="body mt-4 text-muted-foreground">
-              A book preview will be available here before direct sales launch.
+            <p className="label text-gold">
+              {book.preview?.statusLabel ?? "Preview Not Yet Connected"}
             </p>
-            <p className="body-sm mt-4 text-muted-foreground">
-              No sample PDF, downloadable chapter, or interior preview is connected
-              in this phase.
+            <p className="body mt-4 text-muted-foreground">
+              {book.preview?.statusText ??
+                "Sample pages are planned, but no downloadable preview is connected in this phase."}
             </p>
           </div>
         </div>

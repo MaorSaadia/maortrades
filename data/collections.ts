@@ -2,36 +2,34 @@ import type { Collection } from "@/types/collection";
 
 export const collections: Collection[] = [
   {
-    id: "placeholder-smart-money-foundations",
-    slug: "smart-money-foundations-placeholder",
+    id: "smart-money-foundations",
+    slug: "smart-money-foundations",
     title: "Smart Money Foundations",
     subtitle: "Market structure, liquidity, and institutional concepts",
     description:
-      "A structured introduction to market structure, liquidity, institutional concepts, and execution foundations.",
+      "A focused reading set for organizing Smart Money Concepts, ICT terminology, liquidity, market structure, and price-delivery logic.",
     bookSlugs: ["smart-money-simplified", "the-institutional-ict-codex"],
     featured: true,
-    badge: "Placeholder",
-    coverImage: "/books/smart-money-foundations-placeholder.jpg",
+    badge: "Smart Money",
   },
   {
-    id: "placeholder-advanced-ict-collection",
-    slug: "advanced-ict-collection-placeholder",
+    id: "advanced-ict-execution",
+    slug: "advanced-ict-execution",
     title: "Advanced ICT Collection",
     subtitle: "Advanced execution models and funded trading applications",
     description:
-      "Advanced models, refined entry frameworks, session logic, and funded trading execution.",
+      "A tactical path for readers moving from concept knowledge into advanced model selection, session logic, execution standards, and risk-aware application.",
     bookSlugs: ["the-ict-playbook", "the-institutional-operator-book-2"],
     featured: false,
-    badge: "Placeholder",
-    coverImage: "/books/advanced-ict-collection-placeholder.jpg",
+    badge: "Execution",
   },
   {
-    id: "placeholder-complete-maortrades-library",
-    slug: "complete-maortrades-library-placeholder",
+    id: "complete-maortrades-library",
+    slug: "complete-maortrades-library",
     title: "The Complete MaorTrades Library",
     subtitle: "From foundations through advanced performance",
     description:
-      "The complete educational collection from beginner foundations through advanced execution and trading psychology.",
+      "The connected catalogue path from beginner foundations through Smart Money study, advanced execution, risk architecture, and trading psychology.",
     bookSlugs: [
       "day-trading-for-absolute-beginners",
       "smart-money-simplified",
@@ -43,7 +41,6 @@ export const collections: Collection[] = [
       "the-institutional-operator-book-2",
     ],
     featured: true,
-    badge: "Placeholder",
-    coverImage: "/books/complete-maortrades-library-placeholder.jpg",
+    badge: "Complete Library",
   },
 ];

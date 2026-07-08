@@ -24,7 +24,7 @@ export function FeaturedBooksSection() {
           <SectionHeader
             eyebrow="Featured Books"
             title="EXPLORE THE LIBRARY"
-            description="Explore books covering trading foundations, Smart Money Concepts, advanced ICT models, market structure, execution, risk management, and trading psychology."
+            description="A selected view of the MaorTrades catalogue, spanning the flagship series, Smart Money study, advanced execution, and trading behavior."
           />
           <Button href="/books" variant="outline" className="md:mb-1">
             View All Books

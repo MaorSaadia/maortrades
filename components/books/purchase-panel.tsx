@@ -12,9 +12,9 @@ export function PurchasePanel({ book }: PurchasePanelProps) {
   const includedItems = purchase?.includedItems ?? [
     "Digital PDF edition",
     "Read on your preferred compatible device",
-    "Direct MaorTrades purchase experience coming soon",
+    "Direct PDF purchasing will be available when the MaorTrades store launches.",
   ];
-  const ctaLabel = purchase?.ctaLabel ?? "Direct Purchase Coming Soon";
+  const ctaLabel = purchase?.ctaLabel ?? "PDF Edition Not Yet Available";
 
   return (
     <aside
@@ -26,7 +26,7 @@ export function PurchasePanel({ book }: PurchasePanelProps) {
         {formatLabel}
       </h2>
       <p className="body-sm mt-4 text-muted-foreground">
-        Immediate digital access will be available when direct purchasing launches.
+        Direct PDF purchasing will be available when the MaorTrades store launches.
       </p>
 
       <div

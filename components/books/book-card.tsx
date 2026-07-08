@@ -35,9 +35,9 @@ export function BookCard({
       <div className="flex min-w-0 flex-col">
         <div className="flex flex-wrap items-center gap-2">
           <BookLevelBadge level={book.level} />
-          {book.seriesNumber ? (
+          {book.badge ? (
             <span className="label border border-border px-2 py-1 text-muted-foreground">
-              Book {book.seriesNumber}
+              {book.badge}
             </span>
           ) : null}
           {book.series ? (
@@ -48,7 +48,7 @@ export function BookCard({
         </div>
 
         <p className="label mt-5 text-gold">{primaryCategory}</p>
-        <h3 className="heading-sm mt-2 text-navy">{book.title}</h3>
+        <h3 className="heading-sm mt-2 break-words text-navy">{book.title}</h3>
         {book.subtitle ? (
           <p className="body-sm mt-2 text-muted-foreground">{book.subtitle}</p>
         ) : null}

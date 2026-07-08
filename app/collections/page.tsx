@@ -3,7 +3,7 @@ import { PlaceholderPage } from "@/components/sections/placeholder-page";
 
 export const metadata: Metadata = {
   title: "Collections",
-  description: "Future MaorTrades book collections and reading paths.",
+  description: "MaorTrades book collections and reading paths.",
 };
 
 export default function CollectionsPage() {
@@ -11,8 +11,8 @@ export default function CollectionsPage() {
     <PlaceholderPage
       eyebrow="Collections"
       title="Grouped reading paths will be organized here."
-      description="This page is reserved for future bundles, series collections, and complete-library paths."
-      detail="Collection data already exists as a typed placeholder, without commerce or checkout logic."
+      description="This page is reserved for bundles, series collections, and complete-library paths."
+      detail="Collection data is already organized for the catalogue, without commerce or checkout logic."
     />
   );
 }

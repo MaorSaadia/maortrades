@@ -24,8 +24,8 @@ export const footerNavigation = {
   ],
   about: [
     { label: "About Maor", href: "/about" },
-    { label: "Contact placeholder", href: "/about#contact" },
-    { label: "Amazon Author placeholder", href: "/about#amazon-author" },
+    { label: "Contact", href: "/about#contact" },
+    { label: "Author Links", href: "/about#amazon-author" },
   ],
   legal: [
     { label: "Privacy", href: "#legal" },

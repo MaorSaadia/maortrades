@@ -12,6 +12,8 @@ export function BookStructure({ book }: BookStructureProps) {
     return null;
   }
 
+  const isVerifiedParts = book.structureType === "verified-parts";
+
   return (
     <Section surface="dark">
       <Container>
@@ -19,7 +21,11 @@ export function BookStructure({ book }: BookStructureProps) {
           <SectionHeader
             eyebrow="The Curriculum"
             title="INSIDE THE BOOK"
-            description="A high-level look at the book structure without pretending to show a complete manuscript or exact chapter list."
+            description={
+              isVerifiedParts
+                ? "Verified high-level parts from the book structure."
+                : "Editorial topic groupings based on the book's known positioning, not a fabricated chapter list."
+            }
             className="[&_h2]:text-ivory [&_p]:text-ivory/70"
           />
           <div className="grid gap-4">

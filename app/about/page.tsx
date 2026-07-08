@@ -12,7 +12,7 @@ export default function AboutPage() {
       eyebrow="About"
       title="Maor Saadia is the author and creator behind MaorTrades."
       description="This route will later tell the story of the platform, the publishing approach, and the professional trading education philosophy."
-      detail="Author biography, contact details, and external author links are placeholders for a later phase."
+      detail="Author biography, contact details, and external author links are planned for a later phase."
     />
   );
 }

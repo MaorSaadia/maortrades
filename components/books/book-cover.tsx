@@ -52,7 +52,7 @@ export function BookCover({
         "relative flex aspect-[3/4.25] min-h-72 w-full flex-col justify-between overflow-hidden border border-gold/30 bg-navy p-6 text-ivory shadow-refined",
         className,
       )}
-      aria-label={`${book.title} cover placeholder`}
+      aria-label={`${book.title} text-only cover fallback`}
       role="img"
     >
       <div aria-hidden="true" className="absolute inset-y-0 left-7 w-px bg-gold/35" />

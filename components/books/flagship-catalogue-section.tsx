@@ -22,9 +22,9 @@ export function FlagshipCatalogueSection({
             <p className="label text-gold">The Flagship Series</p>
             <h2 className="display-lg mt-5 text-ivory">THE INSTITUTIONAL OPERATOR</h2>
             <p className="body-lg mt-6 max-w-2xl text-ivory/72">
-              A two-volume trading masterclass connecting market foundations,
-              institutional concepts, advanced execution, risk architecture,
-              psychology, and professional trading identity.
+              The two-volume flagship system connecting market foundations,
+              Smart Money frameworks, advanced execution, risk architecture,
+              performance psychology, and professional trading identity.
             </p>
           </div>
 

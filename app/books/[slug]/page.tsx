@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { AuthorSection } from "@/components/books/author-section";
 import { BookBreadcrumbs } from "@/components/books/book-breadcrumbs";
 import { BookHero } from "@/components/books/book-hero";
+import { BookKeyTopics } from "@/components/books/book-key-topics";
 import { BookLearnings } from "@/components/books/book-learnings";
 import { BookMetadataStrip } from "@/components/books/book-metadata-strip";
 import { BookPreview } from "@/components/books/book-preview";
@@ -36,13 +37,9 @@ export async function generateMetadata({
     };
   }
 
-  const title = book.seriesNumber
-    ? `${book.title} Book ${book.seriesNumber} | Trading Book by Maor Saadia | MaorTrades`
-    : `${book.title} | Trading Book by Maor Saadia | MaorTrades`;
-
   return {
-    title,
-    description: book.shortDescription,
+    title: book.seo.title,
+    description: book.seo.description,
   };
 }
 
@@ -60,6 +57,7 @@ export default async function BookPage({ params }: BookPageProps) {
       <BookHero book={book} />
       <BookMetadataStrip book={book} />
       <BookLearnings book={book} />
+      <BookKeyTopics book={book} />
       <BookStructure book={book} />
       <ReaderProfile book={book} />
       <BookPreview book={book} />

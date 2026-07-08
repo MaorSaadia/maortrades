@@ -51,15 +51,15 @@ export function SiteFooter() {
           className="mt-12 grid gap-5 border-y border-border py-8 md:grid-cols-[1fr_auto]"
         >
           <div>
-            <p className="heading-sm text-navy">Newsletter placeholder</p>
+            <p className="heading-sm text-navy">MaorTrades Letter</p>
             <p className="body-sm mt-2 max-w-2xl text-muted-foreground">
-              A future place for structured notes, launch updates, and free trading
+              Planned for structured notes, launch updates, and free trading
               resources. No email provider is connected in this phase.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:items-start">
             <input
-              aria-label="Email address placeholder"
+              aria-label="Email address"
               disabled
               placeholder="Email address"
               className="min-h-12 w-full border border-border bg-background px-4 text-sm text-muted-foreground disabled:opacity-70 sm:w-64"

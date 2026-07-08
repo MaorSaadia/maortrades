@@ -24,7 +24,7 @@ export function NewsletterSection() {
 
           <form
             className="border border-border bg-surface p-5 shadow-refined"
-            aria-describedby="newsletter-placeholder-note"
+            aria-describedby="newsletter-status-note"
           >
             <label htmlFor="newsletter-email" className="label text-navy">
               Email address
@@ -42,7 +42,7 @@ export function NewsletterSection() {
                 Join the Letter
               </Button>
             </div>
-            <p id="newsletter-placeholder-note" className="body-sm mt-4 text-muted-foreground">
+            <p id="newsletter-status-note" className="body-sm mt-4 text-muted-foreground">
               Newsletter UI only. No email service or submission backend is connected yet.
             </p>
           </form>

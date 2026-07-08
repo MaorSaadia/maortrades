@@ -28,12 +28,12 @@ export function FlagshipSeriesSection() {
             <Eyebrow className="text-gold">The Flagship Series</Eyebrow>
             <h2 className="display-lg mt-5 text-ivory">THE INSTITUTIONAL OPERATOR</h2>
             <p className="body-lg mt-6 max-w-2xl text-ivory/72">
-              A two-volume trading masterclass built to take the reader from market
-              foundations and smart money concepts through advanced execution, risk
-              architecture, performance psychology, and professional trading identity.
+              The flagship two-volume system for moving from market foundations
+              and Smart Money frameworks into advanced execution, risk architecture,
+              performance psychology, and professional trading identity.
             </p>
             <div className="mt-9">
-              <Button href="/collections" variant="gold">
+              <Button href="/books#flagship-series" variant="gold">
                 Explore the Series
               </Button>
             </div>

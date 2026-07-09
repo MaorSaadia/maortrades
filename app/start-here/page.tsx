@@ -545,12 +545,19 @@ export default function StartHerePage() {
                   </p>
                 ))}
               </div>
+              <p className="body-sm mt-6 text-muted-foreground">
+                Not ready for a book yet? The free resources offer lighter
+                checklists, reference sheets, and preparation tools.
+              </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button href="/books" variant="outline">
                   Browse All Books
                 </Button>
                 <Button href="/collections" variant="text">
                   Explore Collections
+                </Button>
+                <Button href="/resources" variant="text">
+                  Explore Free Resources
                 </Button>
               </div>
             </div>

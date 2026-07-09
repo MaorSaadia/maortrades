@@ -94,6 +94,7 @@ export type Book = {
   structureType?: BookStructureType;
   bookStructure?: BookSection[];
   relatedBookSlugs?: string[];
+  relatedResourceSlugs?: string[];
   readingPathStages?: ReadingPathStage[];
   purchase?: BookPurchase;
   preview?: BookPreview;

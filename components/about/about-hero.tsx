@@ -15,7 +15,7 @@ export function AboutHero() {
   return (
     <Section className="border-b border-border py-0">
       <Container className="grid gap-12 py-16 md:py-24 lg:grid-cols-[1fr_0.82fr] lg:items-center">
-        <div>
+        <div className="min-w-0">
           <Eyebrow>About MaorTrades</Eyebrow>
           <h1 className="display-xl mt-5 max-w-5xl break-words text-navy">
             TRADING INFORMATION IS EVERYWHERE.

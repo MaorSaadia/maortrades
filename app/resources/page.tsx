@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/sections/placeholder-page";
+import { ResourcesLanding } from "@/components/resources/resources-landing";
+import { absoluteUrl } from "@/lib/site-url";
+
+const title = "Free Trading Resources | Checklists & Guides | MaorTrades";
+const description =
+  "Explore free MaorTrades trading resources including ICT checklists, Smart Money reference sheets, trading discipline tools, and daily preparation worksheets.";
 
 export const metadata: Metadata = {
-  title: "Resources",
-  description: "Future MaorTrades free resources and downloadable frameworks.",
+  title,
+  description,
+  alternates: {
+    canonical: absoluteUrl("/resources"),
+  },
+  openGraph: {
+    title,
+    description,
+    url: absoluteUrl("/resources"),
+    type: "website",
+  },
 };
 
 export default function ResourcesPage() {
-  return (
-    <PlaceholderPage
-      eyebrow="Resources"
-      title="Free trading resources will be collected here."
-      description="A future home for checklists, guides, downloadable frameworks, and educational tools."
-      detail="Resource downloads, email capture, and analytics are intentionally not implemented."
-    />
-  );
+  return <ResourcesLanding />;
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -23,12 +24,22 @@ export function FutureDirection() {
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {futureFoundationItems.map((item) => (
-                <p
-                  key={item}
-                  className="label border-l border-gold bg-background p-4 text-navy"
-                >
-                  {item}
-                </p>
+                item === "Educational articles" || item === "Free resources" ? (
+                  <Link
+                    key={item}
+                    href={item === "Educational articles" ? "/articles" : "/resources"}
+                    className="label border-l border-gold bg-background p-4 text-navy transition-colors hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                  >
+                    {item}
+                  </Link>
+                ) : (
+                  <p
+                    key={item}
+                    className="label border-l border-gold bg-background p-4 text-navy"
+                  >
+                    {item}
+                  </p>
+                )
               ))}
             </div>
             <p className="heading-sm mt-9 text-navy">

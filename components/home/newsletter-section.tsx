@@ -35,15 +35,16 @@ export function NewsletterSection() {
                 name="email"
                 type="email"
                 autoComplete="email"
+                disabled
                 placeholder="you@example.com"
-                className="min-h-12 w-full border border-border bg-background px-4 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                className="min-h-12 w-full border border-border bg-background px-4 text-sm text-muted-foreground placeholder:text-muted-foreground disabled:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
               />
-              <Button type="button" variant="primary" className="shrink-0">
-                Join the Letter
+              <Button disabled type="button" variant="primary" className="shrink-0">
+                Coming Soon
               </Button>
             </div>
             <p id="newsletter-status-note" className="body-sm mt-4 text-muted-foreground">
-              Newsletter UI only. No email service or submission backend is connected yet.
+              Email delivery will be enabled when the MaorTrades Letter launches.
             </p>
           </form>
         </div>

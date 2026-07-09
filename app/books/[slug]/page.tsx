@@ -7,6 +7,7 @@ import { BookKeyTopics } from "@/components/books/book-key-topics";
 import { BookLearnings } from "@/components/books/book-learnings";
 import { BookMetadataStrip } from "@/components/books/book-metadata-strip";
 import { BookPreview } from "@/components/books/book-preview";
+import { BookResourceRecommendation } from "@/components/books/book-resource-recommendation";
 import { BookStructure } from "@/components/books/book-structure";
 import { FinalBookCTA } from "@/components/books/final-book-cta";
 import { ReaderProfile } from "@/components/books/reader-profile";
@@ -62,6 +63,7 @@ export default async function BookPage({ params }: BookPageProps) {
       <ReaderProfile book={book} />
       <BookPreview book={book} />
       <ReadingPath book={book} />
+      <BookResourceRecommendation book={book} />
       <SeriesNavigation book={book} />
       <AuthorSection />
       <RelatedBooks book={book} />

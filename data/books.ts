@@ -163,6 +163,7 @@ export const books: Book[] = [
       "the-ict-playbook",
       "the-institutional-operator-book-1",
     ],
+    relatedResourceSlugs: ["smart-money-quick-reference"],
     preview: {
       label: "Smart Money Preview",
       description:
@@ -246,6 +247,7 @@ export const books: Book[] = [
       "the-institutional-operator-book-1",
       "the-institutional-operator-book-2",
     ],
+    relatedResourceSlugs: ["ict-trading-checklist"],
     preview: {
       label: "Execution Preview",
       description:
@@ -498,6 +500,7 @@ export const books: Book[] = [
       "the-institutional-operator-book-1",
       "the-ict-playbook",
     ],
+    relatedResourceSlugs: ["trading-discipline-reset-checklist"],
     preview: {
       label: "Performance Preview",
       description:
@@ -589,6 +592,7 @@ export const books: Book[] = [
       "smart-money-simplified",
       "the-ict-playbook",
     ],
+    relatedResourceSlugs: ["daily-trading-preparation-sheet"],
     preview: {
       label: "Operator Book 1 Preview",
       description:

@@ -4,6 +4,7 @@ import Script from "next/script";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { getSiteUrl } from "@/lib/site-url";
+
 import "./globals.css";
 
 const display = Cormorant_Garamond({

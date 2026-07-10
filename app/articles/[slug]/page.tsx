@@ -95,7 +95,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 <ArticleCollectionRecommendation article={article} />
                 <RelatedArticles article={article} />
                 <ArticleFinalCTA />
-                <ArticleNewsletterCTA />
+                <ArticleNewsletterCTA source="article" />
               </div>
             </article>
             <aside className="hidden lg:block">

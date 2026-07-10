@@ -63,7 +63,7 @@ export function CollectionHero({ collection, books }: CollectionHeroProps) {
               </div>
               <div>
                 <dt className={isFlagship ? "label text-ivory/55" : "label text-muted-foreground"}>Commerce</dt>
-                <dd className={isFlagship ? "body-sm mt-1 text-ivory" : "body-sm mt-1 text-navy"}>Prepared, not connected</dd>
+                <dd className={isFlagship ? "body-sm mt-1 text-ivory" : "body-sm mt-1 text-navy"}>Lemon Squeezy checkout</dd>
               </div>
             </dl>
           </article>

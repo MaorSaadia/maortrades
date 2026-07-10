@@ -3,10 +3,10 @@ import type { Book } from "@/types/book";
 import type { Collection, CollectionRecommendedBook } from "@/types/collection";
 
 const defaultCollectionPurchase = {
-  status: "coming-soon",
-  ctaLabel: "Collection Purchase Coming Soon",
+  status: "available",
+  ctaLabel: "Get the Collection",
   statusText:
-    "Direct collection purchasing will be available when the MaorTrades store launches.",
+    "Secure checkout and purchased-file access are handled by Lemon Squeezy.",
 } satisfies Collection["purchase"];
 
 export const collections: Collection[] = [

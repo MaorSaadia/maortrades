@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/sections/section-header";
+import { NewsletterSignupForm } from "@/components/newsletter/NewsletterSignupForm";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { ResourceCard } from "@/components/resources/resource-card";
@@ -323,17 +324,18 @@ export function ResourcesLanding() {
             <div className="max-w-3xl">
               <Eyebrow>The MaorTrades Letter</Eyebrow>
               <h2 className="heading-lg mt-4 text-navy">
-                RESOURCE DELIVERY WILL CONNECT LATER.
+                JOIN THE MAORTRADES LETTER.
               </h2>
               <p className="body-lg mt-5 text-muted-foreground">
-                The resource library is prepared for future email delivery, but
-                no newsletter provider, database, or download automation is
-                connected in this phase.
+                Receive new articles, book updates, educational frameworks, and
+                selected trading resources from MaorTrades.
               </p>
             </div>
-            <Button href="/start-here" variant="outline">
-              Start With the Reading Path
-            </Button>
+            <NewsletterSignupForm
+              source="resources"
+              heading=""
+              className="w-full max-w-xl shadow-none lg:w-[30rem]"
+            />
           </div>
         </Container>
       </Section>

@@ -1,13 +1,13 @@
 import type { Book } from "@/types/book";
 
 const defaultPurchase = {
-  status: "coming-soon",
+  status: "available",
   formatLabel: "Digital PDF Edition",
-  ctaLabel: "PDF Edition Not Yet Available",
+  ctaLabel: "Get the PDF Edition",
   includedItems: [
     "Digital PDF edition",
     "Read on your preferred compatible device",
-    "Direct PDF purchasing will be available when the MaorTrades store launches.",
+    "Secure checkout and purchased-file access are handled by Lemon Squeezy.",
   ],
 } satisfies Book["purchase"];
 
@@ -29,7 +29,7 @@ export const books: Book[] = [
     badge: "START HERE",
     formats: ["pdf"],
     author: "Maor Saadia",
-    purchaseStatus: "coming-soon",
+    purchaseStatus: "available",
     purchase: defaultPurchase,
     readingPathStages: ["Foundations"],
     keyTopics: [
@@ -112,7 +112,7 @@ export const books: Book[] = [
     featured: true,
     formats: ["pdf"],
     author: "Maor Saadia",
-    purchaseStatus: "coming-soon",
+    purchaseStatus: "available",
     purchase: defaultPurchase,
     readingPathStages: ["Smart Money"],
     keyTopics: [
@@ -195,7 +195,7 @@ export const books: Book[] = [
     badge: "ADVANCED EXECUTION",
     formats: ["pdf"],
     author: "Maor Saadia",
-    purchaseStatus: "coming-soon",
+    purchaseStatus: "available",
     purchase: defaultPurchase,
     readingPathStages: ["Advanced Execution"],
     keyTopics: [
@@ -278,7 +278,7 @@ export const books: Book[] = [
     badge: "REFERENCE GUIDE",
     formats: ["pdf"],
     author: "Maor Saadia",
-    purchaseStatus: "coming-soon",
+    purchaseStatus: "available",
     purchase: defaultPurchase,
     readingPathStages: ["Smart Money", "Advanced Execution"],
     keyTopics: [
@@ -360,7 +360,7 @@ export const books: Book[] = [
     badge: "COMPLETE PATH",
     formats: ["pdf"],
     author: "Maor Saadia",
-    purchaseStatus: "coming-soon",
+    purchaseStatus: "available",
     purchase: defaultPurchase,
     readingPathStages: [
       "Foundations",
@@ -448,7 +448,7 @@ export const books: Book[] = [
     featured: true,
     formats: ["pdf"],
     author: "Maor Saadia",
-    purchaseStatus: "coming-soon",
+    purchaseStatus: "available",
     purchase: defaultPurchase,
     readingPathStages: ["Professional Discipline"],
     keyTopics: [
@@ -535,7 +535,7 @@ export const books: Book[] = [
     seriesNumber: 1,
     formats: ["pdf"],
     author: "Maor Saadia",
-    purchaseStatus: "coming-soon",
+    purchaseStatus: "available",
     purchase: defaultPurchase,
     readingPathStages: ["Foundations", "Smart Money", "Advanced Execution"],
     keyTopics: [
@@ -628,7 +628,7 @@ export const books: Book[] = [
     seriesNumber: 2,
     formats: ["pdf"],
     author: "Maor Saadia",
-    purchaseStatus: "coming-soon",
+    purchaseStatus: "available",
     purchase: defaultPurchase,
     readingPathStages: [
       "Advanced Execution",

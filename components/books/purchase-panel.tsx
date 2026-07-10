@@ -1,3 +1,5 @@
+import { CheckoutButton } from "@/components/commerce/CheckoutButton";
+import { getCommerceAvailability } from "@/lib/commerce/service";
 import type { Book } from "@/types/book";
 
 type PurchasePanelProps = {
@@ -6,15 +8,23 @@ type PurchasePanelProps = {
 
 export function PurchasePanel({ book }: PurchasePanelProps) {
   const purchase = book.purchase;
+  const availability = getCommerceAvailability({
+    type: "book",
+    slug: book.slug,
+  });
   const formatLabel =
     purchase?.formatLabel ??
     book.formats.map((format) => format.toUpperCase()).join(" + ");
   const includedItems = purchase?.includedItems ?? [
     "Digital PDF edition",
     "Read on your preferred compatible device",
-    "Direct PDF purchasing will be available when the MaorTrades store launches.",
+    "Purchase is completed securely through Lemon Squeezy.",
   ];
-  const ctaLabel = purchase?.ctaLabel ?? "PDF Edition Not Yet Available";
+  const isAvailable = availability.status === "available";
+  const unavailableLabel =
+    availability.status === "launch-pending"
+      ? (purchase?.ctaLabel ?? "PDF Edition Not Yet Available")
+      : "Direct Purchase Temporarily Unavailable";
 
   return (
     <aside
@@ -26,15 +36,21 @@ export function PurchasePanel({ book }: PurchasePanelProps) {
         {formatLabel}
       </h2>
       <p className="body-sm mt-4 text-muted-foreground">
-        Direct PDF purchasing will be available when the MaorTrades store launches.
+        {isAvailable
+          ? "Purchase is completed securely through Lemon Squeezy. Download access is provided after successful purchase."
+          : "This PDF edition is prepared for checkout, but direct purchase is not available right now."}
       </p>
 
-      <div
-        role="status"
-        aria-live="polite"
-        className="label mt-6 flex min-h-12 items-center justify-center border border-navy/20 bg-muted px-4 text-center text-navy"
-      >
-        {ctaLabel}
+      <div className="mt-6">
+        <CheckoutButton
+          targetType="book"
+          targetSlug={book.slug}
+          source="book-hero"
+          label="Get the PDF Edition"
+          unavailable={!isAvailable}
+          unavailableLabel={unavailableLabel}
+          className="w-full"
+        />
       </div>
 
       <ul className="mt-6 grid gap-3 border-t border-border pt-5">

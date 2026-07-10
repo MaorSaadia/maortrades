@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
+import { NewsletterSignupForm } from "@/components/newsletter/NewsletterSignupForm";
 import { footerNavigation } from "@/data/navigation";
 import { SITE_CREATOR, SITE_DESCRIPTION } from "@/lib/constants";
-import { Button } from "@/components/ui/button";
 import { Wordmark } from "@/components/ui/wordmark";
 
 const columnLabels = {
@@ -53,21 +53,16 @@ export function SiteFooter() {
           <div>
             <p className="heading-sm text-navy">MaorTrades Letter</p>
             <p className="body-sm mt-2 max-w-2xl text-muted-foreground">
-              Planned for structured notes, launch updates, and free trading
-              resources. No email provider is connected in this phase.
+              Receive structured notes, launch updates, educational frameworks,
+              and selected free trading resources.
             </p>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row md:items-start">
-            <input
-              aria-label="Email address"
-              disabled
-              placeholder="Email address"
-              className="min-h-12 w-full border border-border bg-background px-4 text-sm text-muted-foreground disabled:opacity-70 sm:w-64"
-            />
-            <Button disabled variant="outline">
-              Coming Soon
-            </Button>
-          </div>
+          <NewsletterSignupForm
+            source="footer"
+            heading=""
+            compact
+            className="md:min-w-[30rem]"
+          />
         </div>
 
         <div

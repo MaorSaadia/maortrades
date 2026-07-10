@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import Script from "next/script";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { getSiteUrl } from "@/lib/site-url";
@@ -43,6 +44,10 @@ export default function RootLayout({
           {children}
         </main>
         <SiteFooter />
+        <Script
+          src="https://app.lemonsqueezy.com/js/lemon.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

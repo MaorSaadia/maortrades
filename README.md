@@ -29,6 +29,14 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## MaorTrades Email
+
+The MaorTrades Letter uses Resend Contacts and one configured newsletter Segment with double opt-in confirmation. See [docs/email-setup.md](docs/email-setup.md) for required environment variables and setup steps.
+
+## MaorTrades Commerce
+
+Book and Collection checkout uses Lemon Squeezy with server-created checkout sessions and dashboard-managed digital product delivery. See [docs/lemon-squeezy-setup.md](docs/lemon-squeezy-setup.md) for product setup, Variant ID mapping, Test Mode, Live Mode, and webhook configuration.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

@@ -1,6 +1,6 @@
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Button } from "@/components/ui/button";
+import { NewsletterSignupForm } from "@/components/newsletter/NewsletterSignupForm";
 import { Eyebrow } from "@/components/ui/eyebrow";
 
 export function NewsletterSection() {
@@ -22,31 +22,7 @@ export function NewsletterSection() {
             </p>
           </div>
 
-          <form
-            className="border border-border bg-surface p-5 shadow-refined"
-            aria-describedby="newsletter-status-note"
-          >
-            <label htmlFor="newsletter-email" className="label text-navy">
-              Email address
-            </label>
-            <div className="mt-3 flex flex-col gap-3 sm:flex-row">
-              <input
-                id="newsletter-email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                disabled
-                placeholder="you@example.com"
-                className="min-h-12 w-full border border-border bg-background px-4 text-sm text-muted-foreground placeholder:text-muted-foreground disabled:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-              />
-              <Button disabled type="button" variant="primary" className="shrink-0">
-                Coming Soon
-              </Button>
-            </div>
-            <p id="newsletter-status-note" className="body-sm mt-4 text-muted-foreground">
-              Email delivery will be enabled when the MaorTrades Letter launches.
-            </p>
-          </form>
+          <NewsletterSignupForm source="homepage" heading="" />
         </div>
       </Container>
     </Section>

@@ -20,6 +20,7 @@ import type {
   CommerceTarget,
 } from "@/lib/commerce/types";
 import { signPurchaseContext } from "@/lib/commerce/purchase-context";
+import type { CheckoutAnalyticsContext } from "@/lib/analytics/events";
 
 export function getCommerceAvailability(
   target: CommerceTarget,
@@ -64,9 +65,11 @@ export function getCommerceAvailability(
 export async function createProductCheckout({
   target,
   source,
+  analyticsContext,
 }: {
   target: CommerceTarget;
   source: CheckoutSource;
+  analyticsContext: CheckoutAnalyticsContext;
 }): Promise<CheckoutCreateResult> {
   const product = getCommerceProduct(target);
 
@@ -142,6 +145,10 @@ export async function createProductCheckout({
           product_slug: product.slug,
           source,
           checkout_reference: checkoutReference,
+          analytics_consent: String(analyticsContext.analytics_consent),
+          marketing_consent: String(analyticsContext.marketing_consent),
+          ...(analyticsContext.ga_client_id ? { ga_client_id: analyticsContext.ga_client_id } : {}),
+          ...(analyticsContext.pinterest_click_id ? { pinterest_click_id: analyticsContext.pinterest_click_id } : {}),
         },
       },
       testMode: client.config.testMode,

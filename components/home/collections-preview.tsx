@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/sections/section-header";
@@ -56,12 +56,13 @@ export function CollectionsPreview() {
                 <p className="body-sm text-muted-foreground">
                   {collection.shortDescription}
                 </p>
-                <Link
+                <TrackedLink
                   href={`/collections/${collection.slug}`}
+                  event={{ name: "select_catalogue_item", item_list_id: "homepage_collections", item_list_name: "Homepage collections", source: "homepage", items: [{ itemId: `collection:${collection.slug}`, itemName: collection.title, itemType: "collection", category: collection.badge ?? "collection", quantity: 1 }] }}
                   className="label mt-6 inline-flex text-navy transition-colors group-hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
                 >
                   Explore Collection
-                </Link>
+                </TrackedLink>
               </div>
             </article>
           ))}

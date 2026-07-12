@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { BookCover } from "@/components/books/book-cover";
 import { CollectionCoverComposition } from "@/components/collections/collection-cover-composition";
 import { Container } from "@/components/layout/container";
@@ -62,15 +63,16 @@ function TargetLink({
   const resolved = resolveRecommendationTarget(target);
 
   return (
-    <Link
+    <TrackedLink
       href={resolved.href}
+      event={{ name: "start_here_recommendation_selected", recommendation_type: "editorial_link", target_type: resolved.type, target_slug: resolved.slug }}
       className={cn(
         "transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold",
         className,
       )}
     >
       {children ?? resolved.label}
-    </Link>
+    </TrackedLink>
   );
 }
 

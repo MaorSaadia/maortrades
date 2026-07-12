@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { TrackedButton } from "@/components/analytics/TrackedButton";
 import { LEMON_SQUEEZY_MY_ORDERS_URL } from "@/lib/commerce/constants";
 
 const steps = [
@@ -17,6 +17,6 @@ export function DigitalAccessSteps() {
         <p className="body-sm mt-3 text-muted-foreground">{text}</p>
       </div>)}
     </div>
-    <Button className="mt-8" href={LEMON_SQUEEZY_MY_ORDERS_URL} target="_blank" rel="noreferrer">Open Lemon Squeezy My Orders <span className="sr-only">(opens in a new tab)</span></Button>
+    <TrackedButton event={{ name: "my_orders_clicked" }} className="mt-8" href={LEMON_SQUEEZY_MY_ORDERS_URL} target="_blank" rel="noreferrer">Open Lemon Squeezy My Orders <span className="sr-only">(opens in a new tab)</span></TrackedButton>
   </div>;
 }

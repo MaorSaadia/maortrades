@@ -33,6 +33,7 @@ export type CheckoutCreateRequest = {
   variantId?: unknown;
   price?: unknown;
   redirectUrl?: unknown;
+  analyticsContext?: unknown;
 };
 
 export type CheckoutCreateResponse =

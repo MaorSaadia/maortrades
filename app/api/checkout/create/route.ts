@@ -6,6 +6,7 @@ import type {
 } from "@/lib/commerce/types";
 import {
   parseCheckoutSource,
+  parseCheckoutAnalyticsContext,
   parseCommerceTarget,
 } from "@/lib/commerce/validation";
 
@@ -67,7 +68,8 @@ export async function POST(request: Request) {
     );
   }
 
-  const result = await createProductCheckout({ target, source });
+  const analyticsContext = parseCheckoutAnalyticsContext(body.analyticsContext);
+  const result = await createProductCheckout({ target, source, analyticsContext });
 
   if (result.status === "success") {
     return json({ status: "success", url: result.url }, 200);

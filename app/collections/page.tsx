@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { CollectionCoverComposition } from "@/components/collections/collection-cover-composition";
 import { CollectionStartCTA } from "@/components/collections/collection-start-cta";
 import { Container } from "@/components/layout/container";
@@ -200,8 +200,9 @@ export default function CollectionsPage() {
                           .slice(0, 4)
                           .join(" / ")}
                       </p>
-                      <Link
+                      <TrackedLink
                         href={`/collections/${collection.slug}`}
+                        event={{ name: "select_catalogue_item", item_list_id: "collections", item_list_name: "Collections", source: "collections-page", items: [{ itemId: `collection:${collection.slug}`, itemName: collection.title, itemType: "collection", category: collection.badge ?? "collection", quantity: 1 }] }}
                         className={cn(
                           "label transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold",
                           isDark
@@ -210,7 +211,7 @@ export default function CollectionsPage() {
                         )}
                       >
                         Explore Collection
-                      </Link>
+                      </TrackedLink>
                     </div>
                   </div>
                 </article>

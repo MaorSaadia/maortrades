@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { BookCover } from "@/components/books/book-cover";
 import type { Book } from "@/types/book";
 import { cn } from "@/lib/utils";
@@ -58,12 +58,13 @@ export function BookCard({
           <p className="label text-muted-foreground">
             {formatLabel || "Format to be announced"}
           </p>
-          <Link
+          <TrackedLink
             href={`/books/${book.slug}`}
+            event={{ name: "select_catalogue_item", item_list_id: "book_cards", item_list_name: "Book discovery", source: "book-card", items: [{ itemId: `book:${book.slug}`, itemName: book.title, itemType: "book", category: primaryCategory ?? "book", series: book.series, price: book.price, currency: book.currency, quantity: 1 }] }}
             className="label text-navy transition-colors group-hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
           >
             View Book
-          </Link>
+          </TrackedLink>
         </div>
       </div>
     </article>

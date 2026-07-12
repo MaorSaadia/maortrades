@@ -4,6 +4,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { getWebhookConfig } from "@/lib/commerce/config";
 import { getCommerceProduct, isCheckoutSourceAllowedForTarget } from "@/lib/commerce/catalog";
 import { parseCheckoutCustomData } from "@/lib/commerce/validation";
+import { sendVerifiedOrderAnalytics } from "@/lib/analytics/server/order-events";
 
 export type LemonSqueezyWebhookResult =
   | { status: "ok" }
@@ -43,12 +44,12 @@ export async function handleLemonSqueezyWebhook({
     return { status: "invalid-json" };
   }
 
-  processWebhookPayload(payload);
+  await processWebhookPayload(payload);
 
   return { status: "ok" };
 }
 
-function processWebhookPayload(payload: unknown) {
+async function processWebhookPayload(payload: unknown) {
   if (!payload || typeof payload !== "object") {
     return;
   }
@@ -76,6 +77,10 @@ function processWebhookPayload(payload: unknown) {
       : {};
 
   const orderResult = eventName === "order_created" ? handleOrderCreated(meta.custom_data) : null;
+
+  if (customData && typeof data.id === "string") {
+    await sendVerifiedOrderAnalytics({ eventName: eventName as "order_created" | "order_refunded", orderId: data.id, attributes, context: customData });
+  }
 
   console.info("[commerce] webhook_received", {
     eventName,

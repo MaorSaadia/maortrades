@@ -4,6 +4,7 @@ import { NewsletterSignupForm } from "@/components/newsletter/NewsletterSignupFo
 import { footerNavigation } from "@/data/navigation";
 import { SITE_CREATOR, SITE_DESCRIPTION } from "@/lib/constants";
 import { Wordmark } from "@/components/ui/wordmark";
+import { CookieSettingsButton } from "@/components/analytics/CookieSettingsButton";
 
 const columnLabels = {
   books: "BOOKS",
@@ -40,6 +41,7 @@ export function SiteFooter() {
                       </Link>
                     </li>
                   ))}
+                  {key === "legal" ? <li><CookieSettingsButton /></li> : null}
                 </ul>
               </nav>
             ))}

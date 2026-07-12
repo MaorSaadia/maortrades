@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import Script from "next/script";
+import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { getSiteUrl } from "@/lib/site-url";
@@ -40,11 +41,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body>
-        <SiteHeader />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
+        <AnalyticsProvider><SiteHeader /><main id="main-content" className="flex-1">{children}</main><SiteFooter /></AnalyticsProvider>
         <Script
           src="https://app.lemonsqueezy.com/js/lemon.js"
           strategy="afterInteractive"

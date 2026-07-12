@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useAnalytics } from "@/components/analytics/AnalyticsProvider";
+import { captureCheckoutAnalyticsContext } from "@/lib/analytics/client";
 import { Button } from "@/components/ui/button";
 import type {
   CheckoutCreateResponse,
@@ -40,6 +42,7 @@ export function CheckoutButton({
     unavailable ? "configuration-unavailable" : "idle",
   );
   const [message, setMessage] = useState("");
+  const { consent, track } = useAnalytics();
   const isWorking =
     state === "creating-checkout" || state === "opening-checkout";
 
@@ -52,6 +55,7 @@ export function CheckoutButton({
     setMessage("");
 
     try {
+      const analyticsContext = await captureCheckoutAnalyticsContext(consent);
       const response = await fetch("/api/checkout/create", {
         method: "POST",
         headers: {
@@ -61,6 +65,7 @@ export function CheckoutButton({
           type: targetType,
           slug: targetSlug,
           source,
+          analyticsContext,
         }),
       });
       const data = (await response.json()) as CheckoutCreateResponse;
@@ -81,6 +86,8 @@ export function CheckoutButton({
       }
 
       setState("opening-checkout");
+      const eventId = crypto.randomUUID();
+      track({ name: "checkout_started", event_id: eventId, checkout_source: source, product_type: targetType, product_slug: targetSlug, items: [{ itemId: `${targetType}:${targetSlug}`, itemName: targetSlug, itemType: targetType, category: targetType, quantity: 1 }] });
       openCheckout(data.url);
       setState("idle");
     } catch {

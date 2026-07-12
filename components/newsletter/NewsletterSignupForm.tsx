@@ -8,6 +8,7 @@ import type {
   SubscribeApiResponse,
 } from "@/lib/email/types";
 import { cn } from "@/lib/utils";
+import { useAnalytics } from "@/components/analytics/AnalyticsProvider";
 
 type FormState =
   | "idle"
@@ -46,6 +47,7 @@ export function NewsletterSignupForm({
   const statusId = useId();
   const [state, setState] = useState<FormState>("idle");
   const [message, setMessage] = useState("");
+  const { track } = useAnalytics();
 
   const isResourceRequest = Boolean(resourceSlug);
   const resolvedHeading =
@@ -84,6 +86,7 @@ export function NewsletterSignupForm({
       const data = (await response.json()) as SubscribeApiResponse;
 
       if (data.status === "confirmation-required") {
+        track(isResourceRequest && resourceSlug ? { name: "resource_requested", resource_slug: resourceSlug } : { name: "newsletter_confirmation_requested", source });
         setState("confirmation-required");
         setMessage(
           "Check your inbox. We sent a confirmation link to complete your MaorTrades subscription.",

@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { getResourceBySlug } from "@/data/resources";
+import { ConversionTracker } from "@/components/analytics/ConversionTracker";
 
 type ConfirmedPageProps = {
   searchParams: Promise<{
@@ -46,6 +47,7 @@ export default async function NewsletterConfirmedPage({
 
   return (
     <Section>
+      {status === "confirmed" ? <ConversionTracker event={resource ? { name: "resource_confirmed", resource_slug: resource.slug, resource_type: resource.resourceType } : { name: "newsletter_confirmed" }} /> : null}
       <Container>
         <div className="mx-auto max-w-3xl border-y border-border py-16 text-center md:py-24">
           <Eyebrow>{copy.eyebrow}</Eyebrow>

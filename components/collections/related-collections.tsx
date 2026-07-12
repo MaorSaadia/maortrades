@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/sections/section-header";
@@ -28,9 +28,10 @@ export function RelatedCollections({ collection }: RelatedCollectionsProps) {
         />
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {relatedCollections.map((relatedCollection) => (
-            <Link
+            <TrackedLink
               key={relatedCollection.id}
               href={`/collections/${relatedCollection.slug}`}
+              event={{ name: "select_catalogue_item", item_list_id: "related_collections", item_list_name: "Related Collections", source: "related-collection", items: [{ itemId: `collection:${relatedCollection.slug}`, itemName: relatedCollection.title, itemType: "collection", category: relatedCollection.badge ?? "collection", quantity: 1 }] }}
               className="group border border-border bg-surface p-5 shadow-refined transition-colors hover:border-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
             >
               <p className="label text-gold">{relatedCollection.eyebrow}</p>
@@ -43,7 +44,7 @@ export function RelatedCollections({ collection }: RelatedCollectionsProps) {
               <p className="label mt-6 text-navy transition-colors group-hover:text-gold">
                 Explore Collection
               </p>
-            </Link>
+            </TrackedLink>
           ))}
         </div>
       </Container>

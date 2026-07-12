@@ -1,5 +1,7 @@
 import "server-only";
 
+import { randomUUID } from "node:crypto";
+
 import { getBookBySlug } from "@/data/books";
 import { getCollectionBySlug } from "@/data/collections";
 import {
@@ -17,6 +19,7 @@ import type {
   CommerceAvailability,
   CommerceTarget,
 } from "@/lib/commerce/types";
+import { signPurchaseContext } from "@/lib/commerce/purchase-context";
 
 export function getCommerceAvailability(
   target: CommerceTarget,
@@ -104,15 +107,25 @@ export async function createProductCheckout({
     };
   }
 
+  const checkoutReference = randomUUID();
+  const purchaseContextToken = signPurchaseContext({ ...target, source, checkoutReference });
+  if (!purchaseContextToken) {
+    return {
+      status: "configuration-error",
+      reason: getCommerceConfigErrorMessage(["PURCHASE_CONTEXT_SIGNING_SECRET"]),
+    };
+  }
+  const successUrl = `${client.config.siteUrl}/purchase/success?context=${encodeURIComponent(purchaseContextToken)}`;
+
   const checkout = await client.createCheckout(
     client.config.storeId,
     availability.variantId,
     {
       productOptions: {
-        redirectUrl: `${client.config.siteUrl}/purchase/success`,
+        redirectUrl: successUrl,
         enabledVariants: [Number(availability.variantId)],
-        receiptButtonText: "Return to MaorTrades",
-        receiptLinkUrl: `${client.config.siteUrl}/purchase/success`,
+        receiptButtonText: "Begin Your MaorTrades Reading Path",
+        receiptLinkUrl: successUrl,
       },
       checkoutOptions: {
         embed: true,
@@ -128,6 +141,7 @@ export async function createProductCheckout({
           product_type: product.type,
           product_slug: product.slug,
           source,
+          checkout_reference: checkoutReference,
         },
       },
       testMode: client.config.testMode,

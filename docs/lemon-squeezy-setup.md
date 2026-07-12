@@ -78,3 +78,47 @@ MaorTrades owns product discovery, checkout initiation, source context, and the 
 Lemon Squeezy owns payment collection, checkout payment fields, tax handling, receipts, order records, and purchased-file access.
 
 Do not place paid PDFs in `public/`. Do not send paid PDFs with Resend. Do not build a parallel paid-download delivery system.
+
+## Post-Purchase Experience
+
+Lemon Squeezy remains the paid-file delivery system. Its receipt email contains purchased-content access, and [My Orders](https://app.lemonsqueezy.com/my-orders) lets customers retrieve prior purchases using the checkout email and a secure email login link. MaorTrades does not store customer accounts, entitlements, private order data, or paid files.
+
+The checkout server creates a signed Purchase Context token that lives for two hours. It contains only the catalogue type and slug, checkout source, a random correlation reference, and timestamps. It personalizes `/purchase/success`; it is not payment proof, an order ID, an entitlement, or a download credential. Missing, expired, invalid, tampered, and unknown contexts all fall back to the complete generic access guide.
+
+Configure a dedicated secret of at least 32 characters. Do not reuse any provider or newsletter secret:
+
+```bash
+openssl rand -base64 48
+PURCHASE_CONTEXT_SIGNING_SECRET="generated-value"
+```
+
+Set `PURCHASE_SUPPORT_EMAIL` to show the support-email action. When it is absent, My Orders remains the safe fallback and no broken email action is rendered.
+
+To test the experience:
+
+1. Create one Test Mode checkout for a Book, a Collection, and the Complete Library; follow the server-created success redirect.
+2. Confirm Book context shows canonical cover and study topics, Collection context shows canonical order, and the Complete Library shows grouped paths.
+3. Visit `/purchase/success` without a query, with `?context=invalid`, with a changed token character, and after changing a decoded slug before reusing the old signature. Each should render the generic experience.
+4. For expiry testing, temporarily use an already-expired fixture in a local test or wait beyond the centralized two-hour lifetime; do not shorten production lifetime ad hoc.
+5. Open My Orders and confirm its email-link flow in Test Mode. Test Mode receipt behavior may differ from live delivery.
+
+The Lemon Squeezy receipt button is configured to return to the editorial success page, while the receipt's purchased-content access must remain available through Lemon Squeezy's own content-access control. Configure the dashboard thank-you note to explain: “Use the content-access button in this receipt for your files. Keep this email, or use Lemon Squeezy My Orders to return later.” Do not replace Lemon Squeezy's file-access destination with a marketing link.
+
+## Twelve-Product Dashboard Checklist
+
+For each of the eight Book products and four Collection products in the table above, manually verify:
+
+- the product and variant names;
+- the correct PDF or PDFs are attached (one intended file for a Book; every included Book for a Collection);
+- receipt content-access behavior and button wording;
+- the thank-you note;
+- a Test Mode purchase;
+- file access from both the receipt and My Orders.
+
+Application code does not assume these dashboard checks are complete.
+
+## Security And Future Architecture
+
+The success URL contains no email, billing details, amounts, provider response, order data, or file links. The random checkout reference is only for operational correlation. Webhooks log minimal structured context and neither deliver files nor subscribe purchasers to marketing. Paid PDFs must never be placed in `public/`, and Resend must never send them.
+
+A branded order history, persistent idempotency, verified accounts, or local entitlement dashboard would require a separately designed authentication, database, order-storage, and authorization architecture. None is created in this phase.

@@ -42,8 +42,13 @@ export function parseCheckoutCustomData(customData: unknown) {
   const record = customData as Record<string, unknown>;
   const target = parseCommerceTarget(record.product_type, record.product_slug);
   const source = parseCheckoutSource(record.source);
+  const checkoutReference =
+    typeof record.checkout_reference === "string" &&
+    /^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(record.checkout_reference)
+      ? record.checkout_reference
+      : null;
 
-  if (!target || !source) {
+  if (!target || !source || !checkoutReference) {
     return null;
   }
 
@@ -51,5 +56,6 @@ export function parseCheckoutCustomData(customData: unknown) {
     productType: target.type,
     productSlug: target.slug,
     source,
+    checkoutReference,
   };
 }

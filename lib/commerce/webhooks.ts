@@ -13,6 +13,11 @@ export type LemonSqueezyWebhookResult =
 
 const supportedEvents = ["order_created", "order_refunded"] as const;
 
+export type OrderCreatedResult =
+  | { status: "recognized"; type: "book" | "collection"; slug: string; checkoutReference: string }
+  | { status: "unrecognized-product" }
+  | { status: "missing-context" };
+
 export async function handleLemonSqueezyWebhook({
   rawBody,
   signature,
@@ -70,33 +75,27 @@ function processWebhookPayload(payload: unknown) {
       ? (data.attributes as Record<string, unknown>)
       : {};
 
-  if (customData) {
-    const product = getCommerceProduct({
-      type: customData.productType,
-      slug: customData.productSlug,
-    });
-
-    if (
-      !product ||
-      !isCheckoutSourceAllowedForTarget(
-        { type: customData.productType, slug: customData.productSlug },
-        customData.source,
-      )
-    ) {
-      console.info("[commerce] webhook_custom_data_invalid", { eventName });
-      return;
-    }
-  }
+  const orderResult = eventName === "order_created" ? handleOrderCreated(meta.custom_data) : null;
 
   console.info("[commerce] webhook_received", {
     eventName,
     orderId: data.id,
-    productId: attributes.product_id,
-    variantId: attributes.variant_id,
-    productType: customData?.productType,
-    productSlug: customData?.productSlug,
-    source: customData?.source,
+    productType: orderResult?.status === "recognized" ? orderResult.type : customData?.productType,
+    productSlug: orderResult?.status === "recognized" ? orderResult.slug : customData?.productSlug,
+    checkoutReference: orderResult?.status === "recognized" ? orderResult.checkoutReference : undefined,
+    testMode: typeof attributes.test_mode === "boolean" ? attributes.test_mode : undefined,
+    processingResult: orderResult?.status ?? (customData ? "refund-context-recognized" : "refund-context-missing"),
   });
+}
+
+export function handleOrderCreated(customDataValue: unknown): OrderCreatedResult {
+  const customData = parseCheckoutCustomData(customDataValue);
+  if (!customData) return { status: "missing-context" };
+  const target = { type: customData.productType, slug: customData.productSlug } as const;
+  if (!getCommerceProduct(target) || !isCheckoutSourceAllowedForTarget(target, customData.source)) {
+    return { status: "unrecognized-product" };
+  }
+  return { status: "recognized", type: target.type, slug: target.slug, checkoutReference: customData.checkoutReference };
 }
 
 function isValidSignature(rawBody: string, signature: string, secret: string) {

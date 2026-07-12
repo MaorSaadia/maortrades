@@ -13,6 +13,7 @@ const staticRoutes = [
   "/about",
   "/articles",
   "/resources",
+  "/purchase/access",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

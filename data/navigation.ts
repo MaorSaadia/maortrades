@@ -28,6 +28,7 @@ export const footerNavigation = {
     { label: "The Library", href: "/about#library" },
   ],
   legal: [
+    { label: "Access Purchases", href: "/purchase/access" },
     { label: "Privacy", href: "#legal" },
     { label: "Terms", href: "#legal" },
     { label: "Refund Policy", href: "#legal" },

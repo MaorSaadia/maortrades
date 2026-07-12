@@ -1,5 +1,7 @@
 # Lemon Squeezy Setup
 
+> Live launch gate: complete store identity/activation and payout setup; verify all twelve Live products, prices, currency behavior, tax categories, files, IDs and webhook; then test receipt, My Orders, overlay/fallback, success, support and legal links. This documentation does not switch Test Mode.
+
 Phase 12 uses Lemon Squeezy for payment collection, receipts, taxes, order records, and purchased-file access. MaorTrades creates secure checkout sessions from catalogue slugs only.
 
 ## Setup Steps

@@ -17,6 +17,7 @@ import {
   getCollectionBySlug,
   getRecommendedBooksForCollection,
 } from "@/data/collections";
+import { CollectionJsonLd } from "@/components/collections/collection-json-ld";
 
 type CollectionPageProps = {
   params: Promise<{ slug: string }>;
@@ -43,6 +44,8 @@ export async function generateMetadata({
   return {
     title: collection.seo.title,
     description: collection.seo.description,
+    alternates: { canonical: `/collections/${collection.slug}` },
+    openGraph: { type: "website", title: collection.seo.title, description: collection.seo.description, url: `/collections/${collection.slug}` },
   };
 }
 
@@ -59,6 +62,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
 
   return (
     <>
+      <CollectionJsonLd collection={collection} books={books} />
       <CollectionBreadcrumbs collection={collection} />
       <CollectionHero collection={collection} books={books} />
       <CollectionPositioning collection={collection} />

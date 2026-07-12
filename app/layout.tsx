@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   },
   description:
     "Premium trading books and frameworks for structure, execution, risk, and professional discipline.",
+  openGraph: { type: "website", siteName: "MaorTrades", title: "MaorTrades", description: "Premium trading books and frameworks for structure, execution, risk, and professional discipline." },
+  twitter: { card: "summary", title: "MaorTrades", description: "Premium trading books and frameworks for structure, execution, risk, and professional discipline." },
+  robots: process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true" ? { index: true, follow: true } : { index: false, follow: false },
 };
 
 export default function RootLayout({
@@ -41,7 +44,8 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body>
-        <AnalyticsProvider><SiteHeader /><main id="main-content" className="flex-1">{children}</main><SiteFooter /></AnalyticsProvider>
+        <a href="#main-content" className="fixed left-3 top-3 z-[200] -translate-y-24 bg-navy px-4 py-3 text-sm font-semibold text-ivory transition-transform focus:translate-y-0">Skip to main content</a>
+        <AnalyticsProvider><SiteHeader /><main id="main-content" tabIndex={-1} className="flex-1">{children}</main><SiteFooter /></AnalyticsProvider>
         <Script
           src="https://app.lemonsqueezy.com/js/lemon.js"
           strategy="afterInteractive"

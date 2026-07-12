@@ -15,6 +15,7 @@ import { ReadingPath } from "@/components/books/reading-path";
 import { RelatedBooks } from "@/components/books/related-books";
 import { SeriesNavigation } from "@/components/books/series-navigation";
 import { books, getBookBySlug } from "@/data/books";
+import { BookJsonLd } from "@/components/books/book-json-ld";
 
 type BookPageProps = {
   params: Promise<{ slug: string }>;
@@ -41,6 +42,9 @@ export async function generateMetadata({
   return {
     title: book.seo.title,
     description: book.seo.description,
+    alternates: { canonical: `/books/${book.slug}` },
+    openGraph: { type: "book", title: book.seo.title, description: book.seo.description, url: `/books/${book.slug}`, images: book.coverImage ? [{ url: book.coverImage, width: book.coverImageWidth, height: book.coverImageHeight, alt: `${book.title} book cover` }] : undefined },
+    twitter: { card: "summary_large_image", title: book.seo.title, description: book.seo.description, images: book.coverImage ? [book.coverImage] : undefined },
   };
 }
 
@@ -54,6 +58,7 @@ export default async function BookPage({ params }: BookPageProps) {
 
   return (
     <>
+      <BookJsonLd book={book} />
       <BookBreadcrumbs book={book} />
       <BookHero book={book} />
       <BookMetadataStrip book={book} />

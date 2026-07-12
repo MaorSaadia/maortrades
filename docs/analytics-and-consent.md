@@ -1,5 +1,7 @@
 # Analytics and Consent
 
+> Production gate: verify consent states and final-origin network requests; configure live identifiers; disable debug/test modes deliberately; audit PII; and ensure Privacy/Cookie drafts match deployment before indexing.
+
 Phase 14 uses direct Google Analytics 4 and Pinterest integrations. It does not use Google Tag Manager, a customer profile database, or an internal reporting dashboard. This technical architecture is not, by itself, a legal-compliance conclusion; final privacy and cookie language requires launch review.
 
 ## Consent Model

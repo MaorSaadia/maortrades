@@ -1,5 +1,7 @@
 # MaorTrades Email Setup
 
+> Launch gate: authenticate the production domain; verify From and Reply-To; test confirmation, welcome, unsubscribe, spam-folder, mobile and plain-text behavior in real inboxes. URLs must use the final site origin. Resend must never deliver paid Books.
+
 Phase 11 uses Resend Contacts and Segments for the MaorTrades Letter. It does not use the deprecated Audience API.
 
 ## Required Setup
